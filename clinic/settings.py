@@ -26,12 +26,9 @@ with open(r'c:\Users\Enoch Sinde\Desktop\deployment_keys\msc_sensitive_deploymen
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DJANGO_VALUE', '') != 'False'
 
-ALLOWED_HOSTS = [
-    'msconsult.herokuapp.com',
-    'localhost',
-]
+ALLOWED_HOSTS = [ ]
 
 
 # Application definition
