@@ -1,0 +1,126 @@
+{% extends 'msc/index.html' %}
+
+{% block extrastyle %}
+    <style>
+        .navbar{
+            padding: 5px 0px;
+        }
+
+        .review-banner{
+            height: 150px;
+            background: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5)), url('../../static/msc/images/nnend2.jpg') center -420px no-repeat fixed;
+            background-size: cover;
+        }
+
+        .review-content{
+            padding: 20px 30px;
+        }
+
+        aside{
+            background: rgb(241, 238, 238);
+            padding:20px 15px;
+        }
+
+        .action-btn{
+            background: indianred;
+            color: whitesmoke;
+            padding: 8px;
+            transition: .5s ease;
+        }
+
+        .action-btn:hover{
+            color: whitesmoke;
+            text-decoration: none;
+            box-shadow: 0 0 20px #000000bc;
+        }
+    </style>
+{% endblock %}
+
+
+{% block navlinks %}
+    <li class="nav-item px-lg-0 px-md-0 px-sm-2 px-3 active">
+        <a class="nav-link" href="{% url 'home' %}">Home</a>
+    </li>
+    <li class="nav-item px-lg-0 px-md-0 px-sm-2 px-3 dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Others
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="{% url 'review' %}">Testimonial</a>
+            <a class="dropdown-item" href="{% url 'health-tips' %}">Health Tips</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Blog</a>
+        </div>
+    </li>
+{% endblock %}
+
+{% block banner %}<!-- for the banner image -->
+    <section class='review-banner'>
+    </section>
+{% endblock %}
+
+
+{% block content %}
+    <section class='review-content'>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 mb-5">
+                    <h1 class='text-center text-md-left text-sm-center my-3'>Patient Review</h1>
+                    {% for review in reviews %}
+                        <div class='mb-4'>
+                            <img src="{{ review.image.url }}" alt="" class='img-thumbnail'>
+                            <h3 class='text-center text-md-left text-sm-center'>{{ review.topic }}</h3>
+                            <p class='text-center text-md-left text-sm-center'>
+                                {{ review.briefing }}
+                            </p>
+                        </div>
+                    {% endfor %}
+                    <div class="pagination"><!-- for pagination -->
+                        <span class="step-links" style='margin:auto'>
+                            {% if page_obj.has_previous %}
+                                <a href="?page={{ page_obj.previous_page_number }}" class='action-btn'>previous</a>
+                            {% endif %}
+                            <span class="current mx-2">
+                                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+                            </span>
+                            {% if page_obj.has_next %}
+                                <a href="?page={{ page_obj.next_page_number }}" class='action-btn'>next</a>
+                            {% endif %}
+                        </span>
+                    </div>
+                </div> <!-- end of the column containing the review content -->
+
+                <div class="col-md-4">
+                    <h2 class='text-center text-md-left text-sm-center'>Other Info</h2>
+                    <aside>
+                        Download the Curriculum Vitae of our founder to get to know more about him and his 
+                        very achievements as a orthopaedics consultant
+                        <div class='text-center text-md-right text-sm-center my-3'>
+                            <a href="../../static/msc/credentials/CURRICULUM VITAE most current1.docx" class='action-btn'><i class="fas fa-download"></i> Download</a>
+                        </div>
+                    </aside>
+                </div>
+            </div><!-- end of row -->
+        </div><!-- end of container -->
+    </section>
+{% endblock %}
+
+
+{% block extrascripts %}
+
+{% endblock %}
+
+
+{% block services %}
+{% endblock %}
+
+{% block nutrition %}
+{% endblock %}
+
+{% block about %}
+{% endblock %}
+
+{% block contact %}
+{% endblock %}
+
+

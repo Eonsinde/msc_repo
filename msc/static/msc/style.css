@@ -1,0 +1,137 @@
+*{
+    margin:0;
+    padding: 0;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+
+body{
+    font-family: 'Exo 2', sans-serif;
+}
+
+/* this is for global stylings */
+/* for all HR lines */
+@media screen and (max-width:768px){
+    .line{
+        margin: auto;
+    }
+}
+/* end */
+
+.text-active{
+    color: rgb(172, 84, 84);
+}
+
+.alert-fail{
+    background: rgb(139, 47, 47);
+}
+
+.active{
+    background: rgb(185, 127, 127);
+}
+
+.bg-active-light{
+    background: rgba(117, 13, 13, 0.5);
+}
+
+.bg-theme-red{
+    background: rgb(172, 84, 84);
+}
+
+/* this is the styling of the contents of our application */
+
+.navbar{
+    padding: 20px 0px;
+    transition: .5s ease-in-out;
+}
+
+.navbar .navbar-brand{
+    color: #fff;
+}
+
+.navbar .nav-link{
+    color: #ccc;
+}
+
+/* .navbar-toggler{
+    background: indianred;
+} */
+
+/* for the banner section of our application */
+.banner{
+    height: 95vh;
+    background: url('./images/bg-banner.jpg') center 70px no-repeat fixed;
+    background-size: contain;
+}
+
+.banner-color{
+    height: inherit;
+    background: linear-gradient(rgba(53, 49, 49, 0.87), rgba(0, 0, 0, 0.5));
+}
+
+.banner-brand{
+    font-family: 'Exo', sans-serif;
+    letter-spacing: .5rem;
+}
+
+.banner-content{
+    text-align: center;
+    color: white;
+    padding-top: 250px;
+}
+
+@media screen and (max-width:800px){
+    .banner{
+        background: url('./images/bg-banner.jpg') center center no-repeat fixed;
+    }
+    .banner-content{
+        padding-top: 150px;
+    }
+}
+
+
+/* for the services section of our application */
+.services{
+    padding: 50px 0px;
+}
+
+/* for the nutrition-tips section of our application */
+.nutrition-tips-image{
+    background: linear-gradient(rgba(31, 30, 30, 0.87), rgba(0, 0, 0, 0.5)), url('./images/sharon-pittaway-KUZnfk-2DSQ-unsplash.jpg') no-repeat fixed; 
+    background-size: cover;
+    height: 350px;
+}
+
+/* for our vision section */
+.vision{
+    padding: 60px 0px;
+    background: rgb(172, 84, 84);
+
+}
+
+/* for the about section of our application */
+.about{
+    background-color: #fff;
+    padding: 40px 0px;
+}
+
+/* for the contact section of our application */
+.contact-image{
+    height: 200px;
+    background: linear-gradient(rgba(53, 49, 49, 0.87), rgba(0, 0, 0, 0.5)), url('./images/phone-office-desk.jpg') center center fixed no-repeat;
+    background-size: cover;
+}    
+
+/* for the contact section of our application */
+.contact{
+    padding: 80px 0px;
+}
+
+/* for the footer our of application */
+.footer{
+    background: rgb(172, 84, 84);
+    padding: 30px 0px;
+}
