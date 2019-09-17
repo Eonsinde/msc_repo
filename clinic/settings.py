@@ -21,14 +21,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 
-with open('c:/Users/Enoch Sinde/Desktop/deploymentkeys/msc_sensitive_deployment_cheats.txt') as file:
-	SECRET_KEY = file.read().rstrip('\n')
-
-
 # # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = os.environ.get('DEBUG_VALUE', '') != 'False'
 
-# SECRET_KEY = os.environ.get('MSC_SECRET_KEY')
+SECRET_KEY = 'msc!@#$%^&*()end'
 
 
 DEBUG = True
