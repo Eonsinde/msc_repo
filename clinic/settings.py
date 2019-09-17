@@ -31,7 +31,7 @@ DEBUG = True
 
 
 ALLOWED_HOSTS = [ 
-    "https://fierce-island-36287.herokuapp.com",
+    "fierce-island-36287.herokuapp.com",
 ]
 
 
