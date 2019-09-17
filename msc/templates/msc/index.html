@@ -15,7 +15,6 @@
         <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     {% endblock %}
     <link rel="stylesheet" href="{% static 'msc/style.css' %}">
-    <script src="{% static 'msc/jquery3.js' %}"></script>
     {% block extrastyle %}
         <style>
             .read-more-link{
@@ -31,6 +30,7 @@
             }
         </style>
     {% endblock %}
+    <script src="https://code.jquery.com/jquery-3.4.1.js"  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 </head>
 <body>
     {% block navbar %}
