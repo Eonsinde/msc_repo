@@ -31,7 +31,8 @@
             }
         </style>
     {% endblock %}
-    <script src="https://code.jquery.com/jquery-3.4.1.js"  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src='{% static "msc/jquery3.js" %}'></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.4.1.js"  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script> -->
 </head>
 <body>
     {% block navbar %}
@@ -86,7 +87,7 @@
         <div class="banner-color">
             <div class="container banner-content">
                 <h1 style='font-size: 5rem;'>Welcome</h1> To
-                <h1 class='banner-brand'><b>Mahanaim Surgerical Consult</b></h1>
+                <h1 class='banner-brand'><b>Mahanaim Surgical Consult</b></h1>
                 <hr class='line' style='background: goldenrod; width: 50%; margin:auto' class='mb-3'>
                 <p><b>HEALTH CARE SERVICES AT YOUR VERY DESK</b></p>
             </div>
@@ -330,7 +331,7 @@
                 }
 
 
-                $.post('https://localhost:8000/msc/contact/', data).done( // post the data and on done(promise receive; alert data)
+                $.post('http://localhost:8000/msc/contact/', data).done( // post the data and on done(promise receive; alert data)
                     function(promise){
                             if (promise.info === 'success'){
                                 UI.formAlert('info', 'black', 'left', 'Message sent; we\' contact you soonest', form, formGrp);
