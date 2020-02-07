@@ -27,7 +27,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = 'msc!@#$%^&*()end'
 
-
 DEBUG = True
 
 
@@ -88,7 +87,7 @@ DATABASES = {
         'USER': 'postgres',
         'NAME': 'msc_db',
         'HOST': '127.0.0.1',
-        'PASSWORD': 'meco4christ',
+        'PASSWORD': 'Helicopter123',
         'PORT': '5432',
     }
 }

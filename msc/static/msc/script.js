@@ -7,10 +7,11 @@ class UI{
     static Alert(state, color, position, MSG){
         let message = document.createElement('div');
         message.style.position = 'absolute';
-        message.style.width = 'initial';
-        message.style.margin = 'auto';
+        message.style.width = '250px';
         message.style.top = '75px';
-        message.style.left = '100px';
+        message.style.left = '0px';
+        message.style.right = '0px';
+        message.style.margin = 'auto';
         message.style.zIndex = '2';
         message.className = `alert alert-${state} text-${color} text-${position}`;
         message.appendChild(document.createTextNode(`${MSG}`));
@@ -18,11 +19,20 @@ class UI{
         setTimeout(function(){ message.remove() }, 5000);
     }
     static formAlert(state, color, position, MSG, containingEl, beforeEl){
-        let div = document.createElement('div');
-        div.className = `alert alert-${state} text-${position} text-${color}`;
-        div.appendChild(document.createTextNode(`${MSG}`));
-        containingEl.insertBefore(div, beforeEl);
-        setTimeout(function(){ div.remove(); }, 3000);
+        if (document.querySelector('.form-alert')){
+            document.querySelector('.form-alert').remove();
+            let div = document.createElement('div');
+            div.className = `alert alert-${state} text-${position} text-${color} form-alert`;
+            div.appendChild(document.createTextNode(`${MSG}`));
+            containingEl.insertBefore(div, beforeEl);
+            setTimeout(function(){ div.remove(); }, 3000);
+        }else{
+            let div = document.createElement('div');
+            div.className = `alert alert-${state} text-${position} text-${color} form-alert`;
+            div.appendChild(document.createTextNode(`${MSG}`));
+            containingEl.insertBefore(div, beforeEl);
+            setTimeout(function(){ div.remove(); }, 3000);
+        }
     }
 }
 

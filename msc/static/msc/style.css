@@ -3,6 +3,10 @@
     padding: 0;
 }
 
+:root{
+    --app-theme: rgb(194, 61, 61);
+}
+
 html{
     scroll-behavior: smooth;
 }
@@ -22,7 +26,7 @@ body{
 /* end */
 
 .text-active{
-    color: rgb(172, 84, 84);
+    color: var(--app-theme);
 }
 
 .alert-fail{
@@ -30,15 +34,15 @@ body{
 }
 
 .active{
-    background: rgb(185, 127, 127);
+    background: rgb(179, 68, 68);
 }
 
 .bg-active-light{
-    background: rgba(117, 13, 13, 0.5);
+    background: rgba(138, 38, 38, 0.925);
 }
 
 .bg-theme-red{
-    background: rgb(172, 84, 84);
+    background: var(--app-theme);
 }
 
 /* this is the styling of the contents of our application */
@@ -100,7 +104,7 @@ body{
 
 /* for the nutrition-tips section of our application */
 .nutrition-tips-image{
-    background: linear-gradient(rgba(31, 30, 30, 0.87), rgba(0, 0, 0, 0.5)), url('./images/sharon-pittaway-KUZnfk-2DSQ-unsplash.jpg') no-repeat fixed; 
+    background: linear-gradient(rgba(31, 30, 30, 0.658), rgba(0, 0, 0, 0.5)), url('./images/sharon-pittaway-KUZnfk-2DSQ-unsplash.jpg') no-repeat fixed; 
     background-size: cover;
     height: 350px;
 }
@@ -108,8 +112,7 @@ body{
 /* for our vision section */
 .vision{
     padding: 60px 0px;
-    background: rgb(172, 84, 84);
-
+    background: var(--app-theme);
 }
 
 /* for the about section of our application */
@@ -121,7 +124,7 @@ body{
 /* for the contact section of our application */
 .contact-image{
     height: 200px;
-    background: linear-gradient(rgba(53, 49, 49, 0.87), rgba(0, 0, 0, 0.5)), url('./images/phone-office-desk.jpg') center center fixed no-repeat;
+    background: linear-gradient(rgba(53, 49, 49, 0.705), rgba(0, 0, 0, 0.5)), url('./images/phone-office-desk.jpg') center center fixed no-repeat;
     background-size: cover;
 }    
 
@@ -132,6 +135,6 @@ body{
 
 /* for the footer our of application */
 .footer{
-    background: rgb(172, 84, 84);
+    background: var(--app-theme);
     padding: 30px 0px;
 }
