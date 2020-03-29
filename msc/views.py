@@ -15,6 +15,7 @@ def index(request):
 
 def contact(request):
     if request.method == 'POST':
+        print(request.POST)
         # return JsonResponse({'blank': f'{request.POST["name"]}'})
         if request.POST['name'] != '' and request.POST['mail'] != '' and request.POST['message'] != '' and request.POST['subject'] != '':
             name = request.POST['name']

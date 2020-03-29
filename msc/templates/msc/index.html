@@ -331,15 +331,16 @@
                 }
 
 
-                $.post('contact/', data).done( // post the data and on done(promise receive; alert data)
-                    function(promise){
-                            if (promise.info === 'success'){
-                                UI.formAlert('info', 'black', 'left', 'Message sent; we\' contact you soonest', form, formGrp);
-                            }else{
-                                UI.formAlert('fail', 'white', 'left', 'Please fill in all fields', form, formGrp);
-                            }
-                    }
-                );
+                $.post('contact/', data)
+                    .done( 
+                        function(promise){
+                                if (promise.info === 'success'){
+                                    UI.formAlert('info', 'black', 'left', 'Message sent; we\' contact you soonest', form, formGrp);
+                                }else{
+                                    UI.formAlert('fail', 'white', 'left', 'Please fill in all fields', form, formGrp);
+                                }
+                        }
+                    );
             });
         </script>
     {% endblock %}
