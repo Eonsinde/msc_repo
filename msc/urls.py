@@ -5,7 +5,7 @@ from django.contrib import admin
 
 admin.site.site_header = 'Mahanaim Surgical Consult'
 admin.site.site_title = 'MSC'
-admin.site.index_title = 'MSC Administration'
+admin.site.index_title = "MSC Administration"
 
 
 # write your urlpatterns here
