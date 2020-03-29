@@ -2,6 +2,7 @@ from django.urls import path, re_path
 from . import views
 from django.contrib import admin
 
+app_name = 'msc'
 
 admin.site.site_header = 'Mahanaim Surgical Consult'
 admin.site.site_title = 'MSC'
