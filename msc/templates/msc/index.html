@@ -27,7 +27,7 @@
             }
 
             .submit_contact:hover{
-                box-shadow: 0 0 20px #000000bc;
+                box-shadow: 0 0 10px #000000bc;
             }
         </style>
     {% endblock %}
@@ -262,7 +262,7 @@
                             <label for="message">Message:</label>
                             <textarea name="your_message" id="message" rows="5" class='form-control'></textarea>
                         </div>
-                        <button type="submit" class='submit_contact' style='transition: .5s ease-in-out; color:whitesmoke; background: rgb(194, 61, 61); width: 30%; border:none; padding:9px 0px'>Submit</button>
+                        <button type="submit" class='submit_contact' style='transition: .5s ease-in-out; color:whitesmoke; background: rgb(219, 69, 69); width: 30%; border:none; padding:9px 0px'>Submit</button>
                     </form>
                 </div>
             </div>
@@ -338,6 +338,7 @@
                                     UI.formAlert('info', 'black', 'left', 'Message sent; we\' contact you soonest', form, formGrp);
                                 }else{
                                     UI.formAlert('fail', 'white', 'left', 'Please fill in all fields', form, formGrp);
+                                    console.log(promise);
                                 }
                         }
                     );

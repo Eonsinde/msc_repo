@@ -4,7 +4,7 @@
 }
 
 :root{
-    --app-theme: rgb(194, 61, 61);
+    --app-theme: rgb(221, 65, 65);
 }
 
 html{
@@ -34,11 +34,11 @@ body{
 }
 
 .active{
-    background: rgb(179, 68, 68);
+    background: rgb(194, 96, 96);
 }
 
 .bg-active-light{
-    background: rgba(138, 38, 38, 0.925);
+    background: rgba(170, 56, 56, 0.925);
 }
 
 .bg-theme-red{
