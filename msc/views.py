@@ -61,3 +61,6 @@ class HealthView(generic.ListView):
 
     def get_queryset(self):
         return NutritionTips.objects.all()
+
+def error_404_view(request, exception):
+    return render(request, 'msc/error/404.html')

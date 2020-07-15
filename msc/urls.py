@@ -11,6 +11,7 @@ admin.site.index_title = "MSC Administration"
 
 # write your urlpatterns here
 
+
 urlpatterns = [
     path('', views.index, name='home'),
     path('contact/', views.contact, name='contact'),

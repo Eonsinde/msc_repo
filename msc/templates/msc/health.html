@@ -1,5 +1,7 @@
 {% extends 'msc/index.html' %}
 
+{% block title %}MSC | Health{% endblock %}
+
 {% block extrastyle %}
     <style>
         .review-banner{
@@ -34,16 +36,16 @@
 
 
 {% block navlinks %}
-    <li class="nav-item px-lg-0 px-md-0 px-sm-2 px-3 active">
-        <a class="nav-link" href="{% url 'home' %}">Home</a>
+    <li class="nav-item px-lg-0 px-md-0 px-sm-2 px-3">
+        <a class="nav-link" href="{% url 'msc:home' %}">Home</a>
     </li>
-    <li class="nav-item px-lg-0 px-md-0 px-sm-2 px-3 dropdown">
+    <li class="nav-item px-lg-0 px-md-0 px-sm-2 px-3 dropdown active">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Others
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="{% url 'review' %}">Testimonial</a>
-            <a class="dropdown-item" href="{% url 'health-tips' %}">Health Tips</a>
+            <a class="dropdown-item" href="{% url 'msc:review' %}">Testimonial</a>
+            <a class="dropdown-item" href="{% url 'msc:health-tips' %}">Health Tips</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#blog">Blog</a>
         </div>

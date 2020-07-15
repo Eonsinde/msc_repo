@@ -6,9 +6,13 @@ let navLinks = document.querySelectorAll('.nav-link');
 class UI{
     static Alert(state, color, position, MSG){
         let message = document.createElement('div');
-        message.style.position = 'absolute';
+        message.style.position = 'fixed';
         message.style.width = '250px';
-        message.style.top = '75px';
+        if (document.documentElement.scrollTop > 30){
+            message.style.top = '65px';
+        }else{
+            message.style.top = '42px';
+        }
         message.style.left = '0px';
         message.style.right = '0px';
         message.style.margin = 'auto';
@@ -25,12 +29,14 @@ class UI{
             div.className = `alert alert-${state} text-${position} text-${color} form-alert`;
             div.appendChild(document.createTextNode(`${MSG}`));
             containingEl.insertBefore(div, beforeEl);
+            div.scrollIntoView();
             setTimeout(function(){ div.remove(); }, 3000);
         }else{
             let div = document.createElement('div');
             div.className = `alert alert-${state} text-${position} text-${color} form-alert`;
             div.appendChild(document.createTextNode(`${MSG}`));
             containingEl.insertBefore(div, beforeEl);
+            div.scrollIntoView();
             setTimeout(function(){ div.remove(); }, 3000);
         }
     }

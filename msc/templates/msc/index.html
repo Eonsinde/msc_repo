@@ -7,7 +7,7 @@
     <meta name='description' content="Orthopaedic Surgery Trauma">
     <meta name='keywords' content="Mahanaim Surgerical Consult Nigeria, Olasinde Tony, Get services in orthopaedic trauma cases">
     <meta name='author' content="Dr Olasinde Anthony">
-    <title>MSC</title>
+    <title>{% block title %}MSC | Home{% endblock %}</title>
     {% load static %}
     <link rel="shortcut icon" href="{% static 'msc/images/testing_am_4cX_icon.ico' %}" type="image/x-icon">
     {% block cdnlinks %}
@@ -213,7 +213,7 @@
                         Member: The International Society of Orthopaedic Surgery and Traumatology (SICOT), Nigerian Orthopaedic Association, Nigerian Surgical Research Society
                     </p>
                     <div class='text-md-right text-sm-center text-center'>
-                        <a href="{% url 'review' %}" class='read-more-link'>Read More</a>
+                        <a href="{% url 'msc:review' %}" class='read-more-link'>Read More</a>
                     </div>
                 </div>
             </div>
@@ -244,7 +244,7 @@
                 </div>
                 <div class="col-md-8">
                     <h2 class='text-capitalize mb-4 text-center'>Have any query! or make an appointment</h2>
-                    <form action='{% url "contact" %}' method='POST' id="contact-form" style='width: 90%; margin: auto'>
+                    <form method='POST' id="contact-form" style='width: 90%; margin: auto'>
                         {% csrf_token %}
                         <div class="form-group">
                             <label for="name">Name:</label>
@@ -302,6 +302,7 @@
 
     {% block scripts %}
         {% block cdnscripts %}
+            <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.943/pdf.min.js"></script> -->
             <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
@@ -338,7 +339,6 @@
                                     UI.formAlert('info', 'black', 'left', 'Message sent; we\' contact you soonest', form, formGrp);
                                 }else{
                                     UI.formAlert('fail', 'white', 'left', 'Please fill in all fields', form, formGrp);
-                                    console.log(promise);
                                 }
                         }
                     );

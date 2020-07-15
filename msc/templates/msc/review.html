@@ -1,5 +1,7 @@
 {% extends 'msc/index.html' %}
 
+{% block title %}MSC | Review{% endblock %}
+
 {% block extrastyle %}
     <style>
         .navbar{
@@ -18,7 +20,55 @@
 
         aside{
             background: rgb(241, 238, 238);
-            padding:20px 15px;
+            padding: 20px 15px;
+        }
+
+        /* for the pdf container */
+        .pdf-canvas-container{
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            z-index: 4;
+            left: 0;
+            right: 0;
+            margin: auto;
+            width: 100%;
+            background: rgba(48, 48, 48, 0.719);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            visibility: hidden;
+        }
+
+        .pdf-canvas{
+            height: 500px;
+        }
+
+        .close-pdf-btn{
+            color:rgb(241, 238, 238);
+            font-size: 2rem;
+        }
+
+        .close-pdf-btn:hover{
+            text-decoration: none;
+            color: #ccc;
+        }
+
+        .canvas-controls{
+            width: 3%;
+            /* background: red; */
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .canvas-controls > *{
+            font-size: 1.2rem;
+            color: whitesmoke;
+        }
+
+        .canvas-controls > *:hover{
+            color: rgb(46, 46, 46);
         }
 
         .action-btn{
@@ -33,21 +83,24 @@
             text-decoration: none;
             box-shadow: 0 0 20px #000000bc;
         }
+
+        /* for preview */
+
     </style>
 {% endblock %}
 
 
 {% block navlinks %}
-    <li class="nav-item px-lg-0 px-md-0 px-sm-2 px-3 active">
-        <a class="nav-link" href="{% url 'home' %}">Home</a>
+    <li class="nav-item px-lg-0 px-md-0 px-sm-2 px-3">
+        <a class="nav-link" href="{% url 'msc:home' %}">Home</a>
     </li>
-    <li class="nav-item px-lg-0 px-md-0 px-sm-2 px-3 dropdown">
+    <li class="nav-item px-lg-0 px-md-0 px-sm-2 px-3 dropdown active">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Others
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="{% url 'review' %}">Testimonial</a>
-            <a class="dropdown-item" href="{% url 'health-tips' %}">Health Tips</a>
+            <a class="dropdown-item" href="{% url 'msc:review' %}">Testimonial</a>
+            <a class="dropdown-item" href="{% url 'msc:health-tips' %}">Health Tips</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">Blog</a>
         </div>
@@ -91,14 +144,49 @@
                 </div> <!-- end of the column containing the review content -->
 
                 <div class="col-md-4">
-                    <h2 class='text-center text-md-left text-sm-center'>Other Info</h2>
-                    <aside>
-                        Download the Curriculum Vitae of our founder to get to know more about him and his 
-                        very achievements as a orthopaedics consultant
-                        <div class='text-center text-md-right text-sm-center my-3'>
-                            <a href="../../static/msc/credentials/CURRICULUM VITAE most current1.docx" class='action-btn'><i class="fas fa-download"></i> Download</a>
+                    <section>
+                        <h2 class='text-center text-md-left text-sm-center'>Other Info</h2>
+                        <aside>
+                            Download the Curriculum Vitae of our founder to get to know more about him and his 
+                            very achievements as a orthopaedics consultant
+                            <div class='text-center text-md-right text-sm-center my-3'>
+                                <a href="../../static/msc/credentials/CURRICULUM VITAE most current1.docx" class='action-btn'><i class="fas fa-download"></i> Download</a>
+                            </div>
+                        </aside>
+                    </section>
+                    <section class='mt-4'>
+                        <h2>View Extra Reviews</h2>
+                        <aside class=''>
+                            Preview other reviews made in documents or download them
+                            <div class='mt-4 text-md-left text-sm-center text-center'>
+                                <a href="javascript:void(0);" class='action-btn preview-pdf-btn'>Preview</a>
+                                <a href="../../static/msc/credentials/Correction_of_adult_knee_flexion_contracture.pdf" class='action-btn'>Download</a>
+                                <div class="pdf-canvas-container">
+                                    <a href="#" class='close-pdf-btn'>&times</a>
+                                    <canvas class='pdf-canvas'></canvas>
+                                    <div class="canvas-controls">
+                                        <a href="javascript:void(0);" class="left-control"><i class="fas fa-angle-left"></i></a>
+                                        <a href="javascript:void(0);" class='right-control'><i class="fas fa-angle-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </aside>
+                    </section>
+                    <!-- canvas for pdf preview -->
+                    <!-- <main>
+                        <div id="canvas_container">
+                            <canvas id="pdf_renderer"></canvas>
                         </div>
-                    </aside>
+                        <div id="navigation_controls">
+                            <button id="go_previous">Previous</button>
+                            <input id="current_page" value="1" type="number"/>
+                            <button id="go_next">Next</button>
+                        </div>
+                        <div id="zoom_controls">  
+                            <button id="zoom_in">+</button>
+                            <button id="zoom_out">-</button>
+                        </div>
+                    </main> -->
                 </div>
             </div><!-- end of row -->
         </div><!-- end of container -->
@@ -107,6 +195,102 @@
 
 
 {% block extrascripts %}
+    {% load static %}
+    <script src='{% static "msc/pdfJS/pdf.js" %}'></script>
+    <script>
+        const previewBtn = document.querySelector('.preview-pdf-btn');
+        const closePdfBtn = document.querySelector('.close-pdf-btn');
+        var canvasContainer = document.querySelector('.pdf-canvas-container');
+        var controlsContainer = document.querySelector('.canvas-controls');
+        var leftControl = document.querySelector('.left-control');
+        var rightControl = document.querySelector('.right-control');
+
+        var filePath = '../../static/msc/credentials/Correction_of_adult_knee_flexion_contracture.pdf';
+        var loadingTask = pdfjsLib.getDocument(filePath);
+
+        // to control the page number
+        var pageNumber = 1;
+
+        function createNewCanvas(){
+            // to create the new canvas object per time
+            // note: this is required by pdfJS
+            if (canvasContainer.contains(document.querySelector('.pdf-canvas'))){
+                document.querySelector('.pdf-canvas').remove();
+            }
+
+            let canvas = document.createElement('canvas');
+            canvas.className = 'pdf-canvas';
+            canvasContainer.insertBefore(canvas, controlsContainer);
+            return canvas;
+        }
+
+        function handlePageRender(){
+            loadingTask.promise.then(function(pdf) {
+                // Load information from the first page.
+
+                // this section is to ensure you don't go out of page boundaries
+                    if (pageNumber > pdf.numPages){
+                        pageNumber = pdf.numPages;
+                    }
+                    if (pageNumber < 1){
+                        pageNumber = 1;
+                    }
+
+                    pdf.getPage(pageNumber).then(function(page) {
+                        var scale = 1.5;
+                        var viewport = page.getViewport({ scale: scale, });
+
+                        // Apply page dimensions to the <canvas> element.
+                        var canvas = createNewCanvas();
+                        var context = canvas.getContext("2d");
+                        canvas.height = viewport.height;
+                        canvas.width = viewport.width;
+
+                        // Render the page into the <canvas> element.
+                        var renderContext = {
+                            canvasContext: context,
+                            viewport: viewport
+                        };
+
+                        var renderTask = page.render(renderContext);
+                        renderTask.promise.then(function () {
+                            console.log('Page rendered');
+                        });
+                    });
+                },
+                function(reason) {
+                    console.error(reason);
+                }
+            );
+        }
+
+
+        previewBtn.addEventListener('click', function(){
+            handlePageRender();
+            canvasContainer.style.visibility = 'visible';
+
+            window.addEventListener('click', function(e){
+                if (e.target === canvasContainer){
+                    canvasContainer.style.visibility = 'hidden';
+                }
+            })
+        });
+
+        leftControl.addEventListener('click', function(){
+            pageNumber--;
+            handlePageRender();
+        });
+
+        rightControl.addEventListener('click', function(){
+            pageNumber++;
+            handlePageRender();
+        });
+
+        closePdfBtn.addEventListener('click', function(){
+            canvasContainer.style.visibility = 'hidden';
+        });
+
+    </script>
 
 {% endblock %}
 
