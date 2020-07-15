@@ -32,7 +32,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = [ 
     "fierce-island-36287.herokuapp.com",
-    "mahanaimsurgicalconsult.com",
+    "www.mahanaimsurgicalconsult.com",
     "localhost"
 ]
 
