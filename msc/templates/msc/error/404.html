@@ -4,7 +4,23 @@
 
 
 {% block extrastyle %}
-   
+<style>
+    .red-color-theme{
+        color: var(--app-theme);
+    }
+
+    .jumbotron{
+        background: #f3f3f3;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+    }
+</style>
+{% endblock %}
+
+{% block navbar %}
 {% endblock %}
 
 
@@ -18,15 +34,27 @@
 
 {% block content %}
     <div class="jumbotron">
-        <h1 class="display-4">Page Not Found</h1>
-        <p class="lead">404 error amigo!!!</p>
-        <hr class="my-4">
-        <p>
-            You made a request to a page not located on this fa-server
-            Click the link below to return
-        </p>
-        <a href="{% url 'msc:home' %}" class='btn btn-danger'># Home</a>
+        <div>
+            <div class="text-center">
+                <h1 class="red-color-theme"><i class="fas fa-exclamation-triangle fa-5x"></i></h1>
+                <h2 class="display-4">_Page_Not_Found_</h2>
+                <p class="lead">#404_error_amigo!!!</p>
+                <small class='text-danger text-capitalize'>
+                    You made a request to a page not located on this server
+                        <br />
+                    Click the link below to return
+                </small>
+            </div>
+            <hr class="my-4">
+            <a href="#" class='text-dark'>Home <i class="fas fa-arrow-right"></i></a>
+            <div class='text-center mt-5'>
+                Copyright © 2020 Mahanaimsurgicalconsult. All Rights Reserved
+            </div>
+        </div>
     </div>
+{% endblock %}
+
+{% block footer %}
 {% endblock %}
 
 
