@@ -104,7 +104,7 @@ body{
 
 /* for the nutrition-tips section of our application */
 .nutrition-tips-image{
-    background: linear-gradient(rgba(31, 30, 30, 0.658), rgba(0, 0, 0, 0.5)), url('./images/sharon-pittaway-KUZnfk-2DSQ-unsplash.jpg') no-repeat fixed; 
+    background: linear-gradient(rgba(31, 30, 30, 0.288), rgba(48, 48, 48, 0.233)), url('./images/sharon-pittaway-KUZnfk-2DSQ-unsplash.jpg') no-repeat fixed; 
     background-size: cover;
     height: 350px;
 }
@@ -124,7 +124,7 @@ body{
 /* for the contact section of our application */
 .contact-image{
     height: 200px;
-    background: linear-gradient(rgba(53, 49, 49, 0.705), rgba(0, 0, 0, 0.5)), url('./images/phone-office-desk.jpg') center center fixed no-repeat;
+    background: linear-gradient(rgba(102, 100, 100, 0.171), rgba(82, 81, 81, 0.247)), url('./images/phone-office-desk.jpg') center center fixed no-repeat;
     background-size: cover;
 }    
 

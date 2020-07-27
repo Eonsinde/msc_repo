@@ -22,6 +22,12 @@
             background: rgb(241, 238, 238);
             padding: 20px 15px;
         }
+        
+        .sticky {
+            position: fixed;
+            top: 0;
+            width: 100%
+        }
 
         /* for the pdf container */
         .pdf-canvas-container{
@@ -143,7 +149,7 @@
                     </div>
                 </div> <!-- end of the column containing the review content -->
 
-                <div class="col-md-4">
+                <div class="col-md-4 side-stack">
                     <section>
                         <h2 class='text-center text-md-left text-sm-center'>Other Info</h2>
                         <aside>
@@ -160,7 +166,8 @@
                             Preview other reviews made in documents or download them
                             <div class='mt-4 text-md-left text-sm-center text-center'>
                                 <a href="javascript:void(0);" class='action-btn preview-pdf-btn'>Preview</a>
-                                <a href="../../static/msc/credentials/Correction_of_adult_knee_flexion_contracture.pdf" class='action-btn'>Download</a>
+                                {% load static %}
+                                <a href="{% static 'msc/credentials/Correction_of_adult_knee_flexion_contracture.pdf' %}" class='action-btn'>Download</a>
                                 <div class="pdf-canvas-container">
                                     <a href="#" class='close-pdf-btn'>&times</a>
                                     <canvas class='pdf-canvas'></canvas>
@@ -275,6 +282,17 @@
             canvasContainer.style.visibility = 'hidden';
         });
 
+        let asideMenu = document.querySelector('side-stack');
+        // let sticky = asideMenu.offsetTop;
+
+        // document.addEventListener('scroll', function(){
+        //     if (window.pageYOffset > sticky){
+        //         console.log("I'm here fish");
+        //         asideMenu.classList.add('sticky');
+        //     }else{
+        //         asideMenu.classList.remove('sticky');
+        //     }
+        // });
     </script>
 
 {% endblock %}
